@@ -19,6 +19,7 @@ tree_house.city_name = "Backyard"
 richard = Guest.new("Richard")
 mary = Guest.new("Mary")
 bob = Guest.new("Bob")
+bob2 = Guest.new("Bob")
 
 #Testing Trip
 richards_trip = Trip.new(my_house, richard)

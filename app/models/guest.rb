@@ -1,9 +1,12 @@
 class Guest
 
     attr_reader :name
+    @@all = []
+    
 
     def initialize(name)
         @name = name
+        @@all << self
     end
 
     def listings
@@ -31,13 +34,27 @@ class Guest
         # returns the number of trips a guest has taken
     end
 
+    def self.all
+        @@all
+    end
+
+    def self.pro_traveller
+        pro_travellers = self.all.select do |travelers|
+            travelers.trips.count > 1
+        end
+        pro_travellers
+    end
+
+    def self.find_all_by_name(given_name)
+        guests_by_name = self.all.select do |guests|
+            guests.name == given_name
+        end
+        guests_by_name
+    end
+
+
 
 end
-
-
-
-
-
 
 # Guest
 # #listings
@@ -46,6 +63,7 @@ end
 # returns an array of all trips a guest has made
 # #trip_count
 # returns the number of trips a guest has taken
+
 # .all
 # returns an array of all guests
 # .pro_traveller
